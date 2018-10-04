@@ -30,9 +30,9 @@
     --color-alpha-x-light: #81ADF0;
     --color-alpha-light: #4F95FF;
     --color-alpha: #3385FF;
-    --color-alpha-dark: #2E77E6;
+    --color-alpha-dark: #2E77E6;                                            
     --color-alpha-x-dark: #1B4186;
-    --color-neutral-xxxx-light: #F5F6FA;
+    --color-neutral-xxxx-light: #F5F6FA;      
     --color-neutral-xxx-light: #E2E3E7;
     --color-neutral-xx-light: #caccd4;
     --color-neutral-x-light: #b5b6c0;
@@ -702,11 +702,11 @@ input::placeholder {
 */
 
 .c-option-list {
-
+    margin-bottom: 24px;
+    /* zorgt voor een margin tussen de checkboxes */
 }
-
 .c-option-list__item {
-
+    margin-bottom: 12px;
 }
 
 /*
@@ -725,13 +725,163 @@ input::placeholder {
         background-color: red;
     */
 }
-
+            /* + betekent enkel label die direct volgt op de input */
 .c-custom-input-option-hidden:checked + .c-custom-input-option-label .c-custom-input-option__symbol {
-    /*
-        Do magic stuff here, for example:
-        fill: blue;
-    */
+    
+    opacity: 1;
+    transform: scale(1);
 }
+
+.c-custom-input-option--checkbox .c-custom-input-option__symbol {
+    display: block;
+    width: 10px;
+    height: 10px;
+    fill: var(--color-alpha);
+}
+  
+.c-custom-input-option--radio .c-custom-input-option__symbol {
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-alpha);
+    border-radius: 100%;
+}
+
+.c-custom-input-option--radio {
+    border-radius: 100%;
+}
+.c-custom-input-option--checkbox {
+    border-radius: var(--radius);
+}
+
+.c-custom-input-option {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--color-neutral-xxx-light);
+    margin-right: 8px;
+    box-shadow: var( --inset-shadow);
+    align-items: center;
+    justify-content: center;
+}
+
+.c-custom-input-option:hover {
+    border-color: var(--color-neutral-xx-light);
+}
+
+.c-custom-input-option-hidden:focus + .c-custom-input-option-label .c-custom-input-option {
+    border: 1px sollid #81ADF0;
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, 0.2);
+}
+
+.c-custom-input-option-label {
+    display: flex;
+}
+
+.c-custom-input-option__symbol {
+    opacity: 0;
+    transform: scale(0);
+    transition: all var(--transition-alpha);
+}
+
+/*
+    Component: Custom toggle
+    ---
+    Custom toggles
+*/
+
+.c-toggle__input {
+    display: block;
+    width: 48px;
+    height: 24px;
+    background: var(--color-neutral-xxxx-light);
+    border: 1px solid var(--color-neutral-xxx-light);
+    border-radius: 24px;
+    transition: all var(--transition-alpha);
+    transition-duration: .25s;
+    margin-right: 0px;
+}
+
+.c-toggle__label {
+    display: flex;
+    align-items: center;
+}
+
+.c-toggle__input::after {
+    content: "";
+    display: block;
+    height: 22px;
+    width: 22px;
+    background: blue;
+    border-radius: 100%;
+    background: #fff;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0, 0.16);
+    transition: all var(--transition-alpha);
+    transition-duration: .25s;
+}
+
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input, 
+.c-toggle__checkbox-hidden:active + .c-toggle__label .c-toggle__input {
+    border-color: var(--color-alpha-x-light);
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, 0.2);
+}
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input:after {
+    transform: translateX(24px);
+}
+.c-toggle__checkbox-hidden:checked + .c-toggle__label .c-toggle__input {
+    background: #3385FF;
+}
+
+.c-toggle__input--alternative {
+    width: 40px;
+    height: 20px;
+    border: none;
+}
+
+.c-toggle__input--alternative:after {
+    margin-top: -1.5px;
+}
+
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input--alternative:after, 
+.c-toggle__checkbox-hidden:active + .c-toggle__label .c-toggle__input--alternative:after {
+    border: 1px solid var(--color-alpha-dark);
+    box-shadow: 0 0 0 3px rgba(51, 133, 255, 0.2);
+}
+
+.c-toggle__checkbox-hidden:focus + .c-toggle__label .c-toggle__input--alternative, 
+.c-toggle__checkbox-hidden:active + .c-toggle__label .c-toggle__input--alternative {
+    border-color: none;
+    box-shadow: none;
+}
+
+.c-toggle__label--inverted {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.c-toggle-list__item {
+    /* border-bottom: 1px solid var(--color-neutral-xx-light); */
+}
+
+/*
+    Component: Custom Select
+    ---
+    Custom select
+*/
+
+.c-custom-select {
+    display: block;
+}
+
+.c-custom-select__symbol {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-neutral-x-light);
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+}
+
 
 /*------------------------------------*\
 #UTILITIES
